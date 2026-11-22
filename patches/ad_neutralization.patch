@@ -1,0 +1,48 @@
+--- a/smali/com/lplayer/ads/MobileAdsInitializer.smali
++++ b/smali/com/lplayer/ads/MobileAdsInitializer.smali
+@@ -10,8 +10,4 @@
+ .method public static initialize(Landroid/content/Context;)V
+-    .registers 2
+-    .param p0, "context"    # Landroid/content/Context;
+-
+-    .prologue
+-    new-instance v0, Lcom/lplayer/ads/AdCallback;
+-    invoke-direct {v0}, Lcom/lplayer/ads/AdCallback;-><init>()V
+-
+-    invoke-static {p0, v0}, Lcom/google/android/gms/ads/MobileAds;->initialize(Landroid/content/Context;Lcom/google/android/gms/ads/initialization/OnInitializationCompleteListener;)V
++    .locals 0
++
++    # [PATCHED: Ad/tamper routine stubbed]
+     return-void
+ .end method
+--- a/smali/com/lplayer/ads/PangleInitializer.smali
++++ b/smali/com/lplayer/ads/PangleInitializer.smali
+@@ -10,8 +10,4 @@
+ .method public static init(Landroid/content/Context;)V
+-    .registers 2
+-    .param p0, "context"    # Landroid/content/Context;
+-
+-    .prologue
+-    new-instance v0, Lcom/bytedance/sdk/openadsdk/TTAdConfig$Builder;
+-    invoke-direct {v0}, Lcom/bytedance/sdk/openadsdk/TTAdConfig$Builder;-><init>()V
+-
+-    invoke-static {p0, v0}, Lcom/bytedance/sdk/openadsdk/TTAdSdk;->init(Landroid/content/Context;Lcom/bytedance/sdk/openadsdk/TTAdConfig;)V
++    .locals 0
++
++    # [PATCHED: Ad/tamper routine stubbed]
+     return-void
+ .end method
+--- a/smali/com/lplayer/ads/AudienceNetworkInitializer.smali
++++ b/smali/com/lplayer/ads/AudienceNetworkInitializer.smali
+@@ -10,6 +10,4 @@
+ .method public static initialize(Landroid/content/Context;)V
+-    .registers 1
+-    .param p0, "context"    # Landroid/content/Context;
+-
+-    .prologue
+-    invoke-static {p0}, Lcom/facebook/ads/AudienceNetworkAds;->initialize(Landroid/content/Context;)V
++    .locals 0
++
++    # [PATCHED: Ad/tamper routine stubbed]
+     return-void
+ .end method

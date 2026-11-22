@@ -1,0 +1,72 @@
+[
+  {
+    "rule_id": "PAIRIP-001",
+    "name": "PairIP Integrity Check Bypass",
+    "description": "Bypasses signature validation and tamper detection routines in secondary DEX.",
+    "category": "anti-tamper",
+    "severity": "critical",
+    "target_class_pattern": ".*PairIP.*|.*SignatureVerify.*|.*SecurityCheck.*|.*IntegrityCheck.*",
+    "target_method": "checkIntegrity|verifySignature|validateDex",
+    "strategy": "stub_return_bool_true"
+  },
+  {
+    "rule_id": "PAIRIP-002",
+    "name": "Neutralize Force-Exit Handlers",
+    "description": "Replaces System.exit and Process.killProcess calls with comments/no-ops.",
+    "category": "anti-tamper",
+    "severity": "critical",
+    "target_class_pattern": ".*",
+    "target_signature": "Ljava/lang/System;->exit\\(I\\)V|Landroid/os/Process;->killProcess\\(I\\)V",
+    "strategy": "neutralize_exit_calls"
+  },
+  {
+    "rule_id": "GMA-001",
+    "name": "Disable Google Mobile Ads Initialization",
+    "description": "Stubs MobileAds.initialize to prevent GMA initialization.",
+    "category": "adware",
+    "severity": "high",
+    "target_class_pattern": ".*MobileAds.*|.*AdManager.*|.*GoogleAds.*",
+    "target_method": "initialize",
+    "strategy": "stub_return_void"
+  },
+  {
+    "rule_id": "GMA-002",
+    "name": "Neutralize Google Interstitial Ad Loading",
+    "description": "Neutralizes InterstitialAd.load calls and display triggers.",
+    "category": "adware",
+    "severity": "high",
+    "target_class_pattern": ".*Interstitial.*|.*AdHelper.*",
+    "target_method": "loadAd|showInterstitial",
+    "strategy": "stub_return_void"
+  },
+  {
+    "rule_id": "PANGLE-001",
+    "name": "Disable Pangle SDK Initialization",
+    "description": "Disables ByteDance Pangle TTAdSdk initialization.",
+    "category": "adware",
+    "severity": "high",
+    "target_class_pattern": ".*TTAdSdk.*|.*Pangle.*",
+    "target_method": "init|start",
+    "strategy": "stub_return_void"
+  },
+  {
+    "rule_id": "AUDIENCE-001",
+    "name": "Disable Facebook Audience Network Ads",
+    "description": "Disables AudienceNetworkAds initialization.",
+    "category": "adware",
+    "severity": "high",
+    "target_class_pattern": ".*AudienceNetwork.*|.*FacebookAds.*",
+    "target_method": "initialize",
+    "strategy": "stub_return_void"
+  },
+  {
+    "rule_id": "TELEMETRY-001",
+    "name": "Disable Analytics Tracking Dispatcher",
+    "description": "Stubs tracking telemetry and event logging beacons.",
+    "category": "telemetry",
+    "severity": "medium",
+    "target_class_pattern": ".*AnalyticsTracker.*|.*Telemetry.*|.*BeaconService.*",
+    "target_method": "logEvent|sendTrackingBeacon|trackEvent",
+    "strategy": "stub_return_void"
+  }
+]
